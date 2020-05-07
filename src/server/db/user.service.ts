@@ -4,7 +4,7 @@ import { Request } from 'express';
 
 interface bodyUserInterface {
     name :string;
-    age :number;
+    email :string;
     password :string;
 }
 

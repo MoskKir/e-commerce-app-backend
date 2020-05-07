@@ -4,17 +4,18 @@ import jwt from 'jwt-simple';
 import { Schema } from 'mongoose';
 
 const UserSchema = createSchema({
-    name: Type.string({
-        unique:true,
+    name: Type.string({   
         required: true,
         trim: true
     }),
-    age: Type.number({
+    email: Type.string({
         required: true,
+        unique:true,
+        trim: true
     }),
     password: Type.string({
         required: true,
-        minlength: 1,
+        minlength: 6,
         trim: true,
     }),
     pets: Type.array().of({

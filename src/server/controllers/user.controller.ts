@@ -35,7 +35,7 @@ export default class UserController {
     private static addNewUser(req :Request, res :Response, next :NextFunction) {
         try {
             if (req.body) UserService.addUser(req.body);
-            res.redirect('/api/users/');            
+            res.status(200).send(req.body);          
         } catch (error) {
             res.status(400).send({error: error.message});
         }
@@ -96,9 +96,9 @@ export default class UserController {
 
     public static routes(path :string = '/') {
         this._router.post(`${path}login`, Validation.login(loginSchema), this.authorization, this.getAllUsers);
-        this._router.get(`${path}`, AccessSecurity.authenticationUser, this.getAllUsers);
+        this._router.get(`${path}`, this.getAllUsers);
         this._router.post(`${path}`, this.addNewUser);
-        this._router.delete(`${path}`, this.deleteUser);
+        this._router.delete(`${path}`, AccessSecurity.authenticationUser, this.deleteUser);
         this._router.put(`${path}`, this.updateUser);
         this._router.post(`${path}addPet`, this.addNewUserPet);
         this._router.get(`${path}:id`, this.getUser); // this endpoin send user with him pets
