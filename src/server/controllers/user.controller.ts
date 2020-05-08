@@ -72,11 +72,10 @@ export default class UserController {
 
     private static async authorization(req :Request, res :Response, next :NextFunction) {
         try {
-            const name = req.body.name;
+            const email = req.body.email;
             const password = req.body.password;
-            const token = await UserService.auth(name, password);
-            res.send(token)
-            // next();
+            const token = await UserService.auth(email, password);
+            res.send({Token: token})
         } catch (error) {
             res.status(400).send({error: error.message});
         }
@@ -90,12 +89,12 @@ export default class UserController {
             const avatar = await UserService.uploadAvatar(filename, id);
             res.send(avatar);
         } catch (error) {
-            res.status(400).send({ error: error.message });
+            res.status(400).send({ error: error});
         }
     }
 
     public static routes(path :string = '/') {
-        this._router.post(`${path}login`, Validation.login(loginSchema), this.authorization, this.getAllUsers);
+        this._router.post(`${path}login`, Validation.login(loginSchema), this.authorization );
         this._router.get(`${path}`, this.getAllUsers);
         this._router.post(`${path}`, this.addNewUser);
         this._router.delete(`${path}`, AccessSecurity.authenticationUser, this.deleteUser);

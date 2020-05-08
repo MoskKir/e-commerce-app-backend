@@ -53,8 +53,8 @@ export default class UserService {
         return await User.findByIdAndUpdate(id, body);
     }
 
-    public static async auth(name :string, password :string) {
-        const user = await User.findByCredentials(name, password);
+    public static async auth(email :string, password :string) {
+        const user = await User.findByCredentials(email, password);
         if (!user) throw new Error('User not found'); 
         const token = await user.generateAuthToken();
         
