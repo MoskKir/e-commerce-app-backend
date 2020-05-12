@@ -22,9 +22,20 @@ export default class ProductController {
         }
     }
 
+    private static async getProductById(req :Request, res :Response, next :NextFunction) {
+        try {
+            const { id } = req.params
+            const product = await ProductService.getProductById(id);
+            res.send(product);  
+        } catch (error) {
+            res.status(400).send({error: error.message});
+        }
+    }
+
     public static routes(path :string = '/') {
         this._router.post(`${path}`, this.addNewProduct);
         this._router.get(`${path}`, this.getAllProducts);
+        this._router.get(`${path}:id`, this.getProductById);
 
         return this._router;
     }

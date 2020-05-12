@@ -22,4 +22,10 @@ export default class ProductService {
         return await Product.find({});
     }
 
+    public static async getProductById(productrId: string) {
+        return await Product.findById(productrId);
+    }
+
+    
+
 }
