@@ -18,4 +18,8 @@ export default class ProductService {
         return product;
     }
 
+    public static async getAllProducts() {
+        return await Product.find({});
+    }
+
 }
