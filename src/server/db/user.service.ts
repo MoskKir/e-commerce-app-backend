@@ -58,7 +58,7 @@ export default class UserService {
         if (!user) throw new Error('User not found'); 
         const token = await user.generateAuthToken();
         
-        return token;
+        return {user, token};
     }
 
     public static async uploadAvatar(filename :string, id :string) {        

@@ -74,8 +74,10 @@ export default class UserController {
         try {
             const email = req.body.email;
             const password = req.body.password;
-            const token = await UserService.auth(email, password);
-            res.send({Token: token})
+            console.log(email, password)
+            const userWithToken = await UserService.auth(email, password);
+            console.log(userWithToken)
+            res.send(userWithToken)
         } catch (error) {
             res.status(400).send({error: error.message});
         }
