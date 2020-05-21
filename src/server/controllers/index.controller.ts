@@ -4,6 +4,7 @@ import UserController from './user.controller';
 import ProductController from './product.controller';
 
 import { Urls } from '../constants/url';
+import ManagersController from './managers.controller';
 
 export default class Router {
     private static _router :ExpressRouter = ExpressRouter();
@@ -11,7 +12,7 @@ export default class Router {
     public static get routes() {
         this._router.use(`/${Urls.api}/${Urls.users}`, UserController.routes());
         this._router.use(`/${Urls.api}/${Urls.products}`, ProductController.routes());
-
+        this._router.use(`/${Urls.api}/${Urls.managers}`, ManagersController.routes());
         
         this._router.use(Urls.main, RootController.routes());
 

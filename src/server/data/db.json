@@ -1,4 +1,0 @@
-{"_id":{"$oid":"5e81c63e2c9ba32e84bdb48d"},"name":"Мистер тест","age":"26","password":"$2a$08$yYEVajXW5D8Ytnm5SVrnmOFDpnw4LbJwLI8rAYccyX86twCQh6Uiq","__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5e8b672ebe7b81380c93f6a1"},"name":"Johni Johnson","age":{"$numberInt":"23"},"password":"$2a$08$NHIWSiGO.9QN9pKp1Zn6OOJmdDvZisXpqwSAAlW7NIJxTa/kILcXe","__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5e8c6a13b6247d40b8fc8ff8"},"name":"Ann T","age":{"$numberInt":"27"},"password":"$2a$08$3.cdPJQrgu5SucIAV84QZ.qomruD5yz1zQJimDrfDf3tFLJMG.XnS","__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5e8cc64315a7052fe4d8fe4d"},"name":"Postage","age":{"$numberInt":"26"},"password":"$2a$08$jdrG8GXk5vLbtRE.gboSDOJrO4dGm7t8kx9xYoXl8XFnLlgeCDn9O","__v":{"$numberInt":"0"}}

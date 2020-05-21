@@ -26,6 +26,4 @@ export default class ProductService {
         return await Product.findById(productrId);
     }
 
-    
-
 }
