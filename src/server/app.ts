@@ -58,8 +58,8 @@ class App {
     private setMiddlewares() {
         this._app.use(cookieParser());
         this._app.use(bodyParser.text());
-        this._app.use(bodyParser.json());
-        this._app.use(multer().any());
+        this._app.use(bodyParser.json({limit: '50mb'}));
+        this._app.use(express.static('uploads'));
     }
 
     private connectToDB() {

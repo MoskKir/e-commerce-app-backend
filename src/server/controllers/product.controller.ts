@@ -1,5 +1,7 @@
 import { Router as ExpressRouter, Request, Response, NextFunction } from 'express';
 import ProductService from '../db/product.service';
+import uploadPhoto from '../middleware/uploadImg';
+import server from '../constants/server';
 
 
 export default class ProductController {
@@ -7,7 +9,10 @@ export default class ProductController {
     
     private static addNewProduct(req :Request, res :Response, next :NextFunction) {
         try {
-            if (req.body) ProductService.addProduct(req.body); 
+            if (req.body) {
+                const imageUrl = `http://localhost:${server.port}/products/${req.file.filename}`;
+                ProductService.addProduct(req.body.product, imageUrl)
+            }; 
         } catch (error) {
             res.status(400).send({error: error.message});
         }
@@ -33,7 +38,7 @@ export default class ProductController {
     }
 
     public static routes(path :string = '/') {
-        this._router.post(`${path}`, this.addNewProduct);
+        this._router.post(`${path}`, uploadPhoto, this.addNewProduct);
         this._router.get(`${path}`, this.getAllProducts);
         this._router.get(`${path}:id`, this.getProductById);
 

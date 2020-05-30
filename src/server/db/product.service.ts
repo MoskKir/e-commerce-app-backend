@@ -11,8 +11,10 @@ interface bodyProductInterface {
 
 export default class ProductService {
 
-    public static async addProduct(body :bodyProductInterface) {
-        const product = new Product(body);
+    public static async addProduct(body :string, imageUrl :string) {
+        const bodyProduct: bodyProductInterface = JSON.parse(body);
+        bodyProduct.photo = imageUrl;
+        const product = new Product(bodyProduct);
         await product.save();
 
         return product;
