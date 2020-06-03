@@ -28,4 +28,8 @@ export default class ProductService {
         return await Product.findById(productrId);
     }
 
+    public static async deleteProduct(id :string) {
+        return await Product.findByIdAndDelete(id);
+    }
+
 }

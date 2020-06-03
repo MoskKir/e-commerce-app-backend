@@ -37,10 +37,20 @@ export default class ProductController {
         }
     }
 
+    private static async deleteProduct(req :Request, res :Response) {
+        try {
+            const { id } = req.params
+            await ProductService.deleteProduct(id);
+        } catch (error) {
+            res.status(400).send({error: error.message});
+        }
+    }
+
     public static routes(path :string = '/') {
         this._router.post(`${path}`, uploadPhoto, this.addNewProduct);
         this._router.get(`${path}`, this.getAllProducts);
         this._router.get(`${path}:id`, this.getProductById);
+        this._router.delete(`${path}:id`, this.deleteProduct);
 
         return this._router;
     }
