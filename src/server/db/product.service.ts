@@ -20,8 +20,8 @@ export default class ProductService {
         return product;
     }
 
-    public static async getAllProducts() {
-        return await Product.find({});
+    public static async getAllProducts(params: { pageNo: number, size: number }) {
+        return await Product.find().skip(+params.pageNo).limit(+params.size);
     }
 
     public static async getProductById(productrId: string) {

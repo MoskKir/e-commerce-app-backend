@@ -20,7 +20,7 @@ export default class ProductController {
 
     private static async getAllProducts(req :Request, res :Response, next :NextFunction) {
         try {
-            const products = await ProductService.getAllProducts();
+            const products = await ProductService.getAllProducts(req.query);
             res.send(products);  
         } catch (error) {
             res.status(400).send({error: error.message});
